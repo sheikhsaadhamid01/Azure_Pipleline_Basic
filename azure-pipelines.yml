@@ -12,31 +12,34 @@ pool:
 jobs:
 - job: Job1
   dependsOn: Job3
-steps:
-  - scripts: echo j1 hello world
+  steps:
+    - scripts: echo j1 hello world
+   displayName: "Run a one line script for J1"
 
-- job: Job2
-steps:
-  - scripts: echo j3 hello world
-  displayName: "Run a one line script for J3"
+  - job: Job2
+  steps:
+    - scripts: echo j3 hello world
+   displayName: "Run a one line script for J2"
 
 - job: Job3
   dependsOn: Job4
 steps:
-  - scripts: echo j1 hello world
+  - scripts: echo j3 hello world
+displayName: "Run a one line script for J3"
 
 - job: Job4
-  dependsOn: 
-    - Job2
+    dependsOn: 
+      - Job2
+    steps: 
+    - scripts: echo j4 hello world
+  displayName: "Run a one line script for j4"
+
   
 steps:
   - scripts: echo j4 hello world
-  displayName: "Run a one line script for J4"
+displayName: "Run a one line script for J4"
 
 
 
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+
