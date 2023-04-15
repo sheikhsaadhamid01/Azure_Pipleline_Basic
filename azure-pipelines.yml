@@ -35,9 +35,6 @@ displayName: "Run a one line script for J3"
   displayName: "Run a one line script for j4"
 
   
-steps:
-  - scripts: echo j4 hello world
-displayName: "Run a one line script for J4"
 
 
 
