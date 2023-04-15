@@ -12,7 +12,7 @@ stages:
 - stage: Build
   jobs:
   - job: Job1
-    dependsOn: Job3
+    dependsOn: Job2
     steps:
     - script: echo j1 Hello, world!
     displayName: 'Run a one-line script for j1'
@@ -26,14 +26,14 @@ stages:
   jobs:
   - job: Job3
     dependsOn:
-    - Job2
+    
     - Job4
     steps:
     - script: echo j3 Hello, world!
     displayName: 'Run a one-line script for j3'
 
   - job: Job4
-    dependsOn: Job2
+   
     steps:
      - script: echo j4 Hello, world!
     displayName: 'Run a one-line script for j4'
