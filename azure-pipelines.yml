@@ -15,7 +15,9 @@ stages:
   - job: Job1
    
     steps:
-    - script: echo j1 Hello, world!
+    - bash : echo 'Hello World'
+    - bash : echo $('PipeLineLevelVariable')
+    - bash : echo $(Build.BuildNumber)
     displayName: 'Run a one-line script for j1'
 
 
