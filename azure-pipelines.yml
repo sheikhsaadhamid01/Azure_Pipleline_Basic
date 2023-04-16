@@ -10,7 +10,7 @@ pool:
   vmImage: ubuntu-latest
 stages:
 - stage: Starting point
-  displayName: Starting point
+  displayName: 'Starting point'
   jobs:
   - job: Job1
    
@@ -21,7 +21,7 @@ stages:
 
 - stage: Stage Component A
   dependsOn: Starting point
-  displayName: Stage Component A
+  displayName: 'Stage Component A'
   jobs:
  
 
@@ -51,7 +51,7 @@ stages:
   dependsOn:
     - Starting point
    
-  displayName: Stage Component C
+  displayName: 'Stage Component C'
 
   jobs:
   
