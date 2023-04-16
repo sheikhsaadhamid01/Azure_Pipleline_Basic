@@ -9,34 +9,96 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 stages:
-- stage: Build
+- stage: Starting point
+  displayName: Starting point
   jobs:
   - job: Job1
-    dependsOn: Job2
+   
     steps:
     - script: echo j1 Hello, world!
     displayName: 'Run a one-line script for j1'
 
-  - job: Job2
-    steps:
-    - script: echo j2 Hello, world!
-    displayName: 'Run a one-line script for j2'
 
-- stage: Deploy 
+- stage: Stage Component A
+  dependsOn: Starting point
+  displayName: Stage Component A
   jobs:
-  - job: Job3
-    dependsOn:
-    
-    - Job4
-    steps:
-    - script: echo j3 Hello, world!
-    displayName: 'Run a one-line script for j3'
+ 
 
   - job: Job4
    
     steps:
      - script: echo j4 Hello, world!
     displayName: 'Run a one-line script for j4'
+
+
+- stage: Stage Component B
+  dependsOn:
+    - Starting point
+ 
+  displayName: 'Stage Component B'
+  jobs:
+  
+
+  - job: Job4
+   
+    steps:
+     - script: echo j4 Hello, world!
+    displayName: 'Run a one-line script for j4'
+
+
+- stage: Stage Component C 
+  dependsOn:
+    - Starting point
+   
+  displayName: Stage Component C
+
+  jobs:
+  
+
+  - job: Job4
+   
+    steps:
+     - script: echo j4 Hello, world!
+    displayName: 'Run a one-line script for j4'
+
+- stage: Product Artifacts 
+  dependsOn:
+   - Stage Component A
+   - Stage Component B
+   - Stage Component C
+  displayName: 'Product Artifacts'
+  jobs:
+ 
+
+  - job: Job4
+   
+    steps:
+     - script: echo j4 Hello, world!
+    displayName: 'Run a one-line script for j4'
+
+- stage: Deploy Application
+  dependsOn: Product artifacts
+  displayName: 'Deploy Application'
+  jobs:
+  
+
+  - job: Job4
+   
+    steps:
+     - script: echo j4 Hello, world!
+    displayName: 'Run a one-line script for j4'
+
+
+- stage: Rolling Back 
+  dependsOn: Product artifacts
+  displayName: 'Rolling Back'
+  jobs:
+  - job: Job3
+   
+    steps:
+    - script: echo j3 Hello, world!
+    displayName: 'Run a one-line script for j3'
 
 
 
