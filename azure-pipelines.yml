@@ -81,6 +81,7 @@ stages:
 
 - stage: Deploy_Application
   dependsOn: Product_Artifacts
+  condition: succeeded(Product_Artifacts)
   displayName: 'Deploy Application'
   jobs:
   
@@ -95,7 +96,7 @@ stages:
 - stage: Rolling_Back 
   dependsOn: 
     - Product_Artifacts
-  
+  condition: failed(Product_Artifacts)
   displayName: 'Rolling Back'
   jobs:
   - job: Job3
