@@ -17,6 +17,7 @@ stages:
     steps:
     - bash : echo 'Hello World'
     - bash : echo $('PipeLineLevelVariable')
+    - bash : echo $('PipeLineNumericVariable')
     - bash : echo $(Build.BuildNumber)
     displayName: 'Run a one-line script for j1'
 
