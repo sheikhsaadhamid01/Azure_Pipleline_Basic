@@ -35,6 +35,7 @@ stages:
 - stage: Stage_Component_B
   dependsOn:
     - Starting_point
+    - Stage_Component_A
  
   displayName: 'Stage Component B'
   jobs:
@@ -50,6 +51,7 @@ stages:
 - stage: Stage_Component_C 
   dependsOn:
     - Starting_point
+    - Stage_Component_B
    
   displayName: 'Stage Component C'
 
@@ -91,7 +93,9 @@ stages:
 
 
 - stage: Rolling_Back 
-  dependsOn: Product_Artifacts
+  dependsOn: 
+    - Product_Artifacts
+    - Deploy_Application
   displayName: 'Rolling Back'
   jobs:
   - job: Job3
