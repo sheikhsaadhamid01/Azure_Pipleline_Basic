@@ -20,7 +20,7 @@ stages:
 
 
 - stage: Stage_Component_A
-  dependsOn: Starting point
+  dependsOn: Starting_point
   displayName: 'Stage Component A'
   jobs:
  
@@ -34,7 +34,7 @@ stages:
 
 - stage: Stage_Component_B
   dependsOn:
-    - Starting point
+    - Starting_point
  
   displayName: 'Stage Component B'
   jobs:
@@ -49,7 +49,7 @@ stages:
 
 - stage: Stage_Component_C 
   dependsOn:
-    - Starting point
+    - Starting_point
    
   displayName: 'Stage Component C'
 
@@ -64,9 +64,9 @@ stages:
 
 - stage: Product_Artifacts 
   dependsOn:
-   - Stage Component A
-   - Stage Component B
-   - Stage Component C
+   - Stage_Component_A
+   - Stage_Component_B
+   - Stage_Component_C
   displayName: 'Product Artifacts'
   jobs:
  
@@ -78,7 +78,7 @@ stages:
     displayName: 'Run a one-line script for j4'
 
 - stage: Deploy_Application
-  dependsOn: Product artifacts
+  dependsOn: Product_Artifacts
   displayName: 'Deploy Application'
   jobs:
   
@@ -91,7 +91,7 @@ stages:
 
 
 - stage: Rolling_Back 
-  dependsOn: Product artifacts
+  dependsOn: Product_Artifacts
   displayName: 'Rolling Back'
   jobs:
   - job: Job3
