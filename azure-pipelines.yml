@@ -9,7 +9,7 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 stages:
-- stage: Starting point
+- stage: Starting_point
   displayName: 'Starting point'
   jobs:
   - job: Job1
@@ -19,7 +19,7 @@ stages:
     displayName: 'Run a one-line script for j1'
 
 
-- stage: Stage Component A
+- stage: Stage_Component_A
   dependsOn: Starting point
   displayName: 'Stage Component A'
   jobs:
@@ -32,7 +32,7 @@ stages:
     displayName: 'Run a one-line script for j4'
 
 
-- stage: Stage Component B
+- stage: Stage_Component_B
   dependsOn:
     - Starting point
  
@@ -47,7 +47,7 @@ stages:
     displayName: 'Run a one-line script for j4'
 
 
-- stage: Stage Component C 
+- stage: Stage_Component_C 
   dependsOn:
     - Starting point
    
@@ -62,7 +62,7 @@ stages:
      - script: echo j4 Hello, world!
     displayName: 'Run a one-line script for j4'
 
-- stage: Product Artifacts 
+- stage: Product_Artifacts 
   dependsOn:
    - Stage Component A
    - Stage Component B
@@ -77,7 +77,7 @@ stages:
      - script: echo j4 Hello, world!
     displayName: 'Run a one-line script for j4'
 
-- stage: Deploy Application
+- stage: Deploy_Application
   dependsOn: Product artifacts
   displayName: 'Deploy Application'
   jobs:
@@ -90,7 +90,7 @@ stages:
     displayName: 'Run a one-line script for j4'
 
 
-- stage: Rolling Back 
+- stage: Rolling_Back 
   dependsOn: Product artifacts
   displayName: 'Rolling Back'
   jobs:
